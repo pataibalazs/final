@@ -23,10 +23,6 @@ phases:
 
 artifacts:
   files:
-    - '**/*' # This includes all files and subdirectories
-    - 'package.json' # Include the package.json file from the root
-    - 'server.js' # Include the server.js if it's in the root
-    - '.ebextensions/**/*' # If you're using Elastic Beanstalk extensions
-    - '.platform/**/*' # If you're using platform hooks
-    - 'Procfile' # Include the Procfile if you have one
-  discard-paths: no # This will keep the directory structure intact
+    - '**/*'
+  base-directory: 'build'  # This directs AWS CodeBuild to package everything inside the 'build' directory
+
