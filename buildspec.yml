@@ -14,7 +14,6 @@ phases:
       - echo "Build started on `date`"
       - npm run build
       - echo "After build, listing files in $(pwd)"
-      - mkdir kaka
       - ls -alh
   post_build:
     commands:
