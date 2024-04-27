@@ -16,7 +16,13 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+
 artifacts:
   files:
-    - '**/*'
-  base-directory: 'build'
+    - '**/*' # This includes all files and subdirectories
+    - 'package.json' # Include the package.json file from the root
+    - 'server.js' # Include the server.js if it's in the root
+    - '.ebextensions/**/*' # If you're using Elastic Beanstalk extensions
+    - '.platform/**/*' # If you're using platform hooks
+    - 'Procfile' # Include the Procfile if you have one
+  discard-paths: no # This will keep the directory structure intact
