@@ -19,10 +19,12 @@ phases:
     commands:
       - echo "Post build, listing files in build directory"
       - ls -alh build/
+      - cp package.json build/  # Copy package.json to the build directory
+      - echo "Listing contents of build directory to verify package.json is there"
+      - ls -alh build/
       - echo "Build completed on `date`"
 
 artifacts:
   files:
     - '**/*'
   base-directory: 'build'  # This directs AWS CodeBuild to package everything inside the 'build' directory
-
