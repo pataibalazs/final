@@ -5,6 +5,8 @@ phases:
     runtime-versions:
       nodejs: 14
     commands:
+      - echo "Listing files in $(pwd)"
+      - ls -alh
       - echo Installing source NPM dependencies...
       - npm install
   build:
