@@ -20,9 +20,20 @@ phases:
       - echo "Post build, listing files in build directory"
       - ls -alh build/
       - echo "Build completed on `date`"
+      - echo "Zipping build directory for deployment"
+      - zip -r build.zip build
+    artifacts:
+      files:
+        - build.zip
 
-artifacts:
-  files:
-    - '**/*'
-  base-directory: 'build'  # This directs AWS CodeBuild to package everything inside the 'build' directory
-
+# Add this to ensure Elastic Beanstalk deploys the build directory correctly
+deploy:
+  on:
+    branch: master
+  provider: elasticbeanstalk
+  zip_file: build.zip
+  skip_cleanup: true
+  region: "your-region"
+  app: "your-app-name"
+  env: "your-env-name"
+  bucket_name: "your-bucket-name"
