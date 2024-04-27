@@ -14,6 +14,7 @@ phases:
       - echo "Build started on `date`"
       - npm run build
       - echo "After build, listing files in $(pwd)"
+      - mkdir kaka
       - ls -alh
   post_build:
     commands:
@@ -24,5 +25,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: 'build'  # This directs AWS CodeBuild to package everything inside the 'build' directory
+  base-directory: '/var/app/current/build'  # This directs AWS CodeBuild to package everything inside the 'build' directory
 
