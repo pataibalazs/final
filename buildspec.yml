@@ -25,5 +25,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: '/var/app/current/build'  # This directs AWS CodeBuild to package everything inside the 'build' directory
+  base-directory: 'build'  # This directs AWS CodeBuild to package everything inside the 'build' directory
 
