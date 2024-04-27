@@ -11,11 +11,15 @@ phases:
       - npm install
   build:
     commands:
-      - echo Build started on `date`
+      - echo "Build started on `date`"
       - npm run build
+      - echo "After build, listing files in $(pwd)"
+      - ls -alh
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo "Post build, listing files in build directory"
+      - ls -alh build/
+      - echo "Build completed on `date`"
 
 artifacts:
   files:
