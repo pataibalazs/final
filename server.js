@@ -3,11 +3,11 @@ const path = require('path');
 const app = express();
 
 // Serve static files from the 'dist' directory instead of 'build'
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Send the index.html file for any other requests
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 const port = process.env.PORT || 3000;
