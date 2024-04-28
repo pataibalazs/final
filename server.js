@@ -2,13 +2,16 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'build')));
+// Serve static files from the 'dist' directory instead of 'build'
+app.use(express.static(path.join(__dirname, 'dist')));
 
+// Send the index.html file for any other requests
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 const port = process.env.PORT || 3000;
-app.listen(app.get('port'), function () {
-  console.log('Server has started! http://localhost:' + app.get('port') + '/');
+// Correct the port setting here to use the 'port' variable directly
+app.listen(port, function () {
+  console.log('Server has started! http://localhost:' + port + '/');
 });
