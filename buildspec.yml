@@ -15,7 +15,9 @@ phases:
       - npm run build
       - echo "After build, listing files in $(pwd)"
       - ls -alh
+      - echo "Zipping build directory into build.zip"
+      - zip -r build.zip build/ # This command assumes 'build' is the directory where your files are
+
 artifacts:
   files:
-    - '**/*'
-  base-directory: 'build'
+    - build.zip  # This should match the name of the zip file created
