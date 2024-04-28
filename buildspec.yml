@@ -15,15 +15,6 @@ phases:
       - npm run build
       - echo "After build, listing files in $(pwd)"
       - ls -alh
-  post_build:
-    commands:
-      - echo "Post build, listing files in build directory"
-      - ls -alh build/
-      - cp package.json build/  # Copy package.json to the build directory
-      - echo "Listing contents of build directory to verify package.json is there"
-      - ls -alh build/
-      - echo "Build completed on `date`"
-
 artifacts:
   files:
     - '**/*'
