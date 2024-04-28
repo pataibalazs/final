@@ -5,19 +5,14 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "Listing files in $(pwd)"
-      - ls -alh
-      - echo Installing source NPM dependencies...
-      - npm install
+      - npm ci --cache .npm --prefer-offline
   build:
     commands:
-      - echo "Build started on `date`"
       - npm run build
-      - echo "After build, listing files in $(pwd)"
-      - ls -alh
-      - echo "Zipping build directory into build.zip"
-      - zip -r build.zip build/ # This command assumes 'build' is the directory where your files are
-
-artifacts:
-  files:
-    - build.zip  # This should match the name of the zip file created
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .npm/**/*
